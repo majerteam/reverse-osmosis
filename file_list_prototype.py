@@ -15,7 +15,7 @@ def path_set(dictionary, path, item):
     path_tuple = path.split("/")
     key = path_tuple[-1]
 
-    dictionary = pathGet(dictionary, "/".join(path_tuple[:-1]))
+    dictionary = path_get(dictionary, "/".join(path_tuple[:-1]))
     dictionary[key] = item
 
 def find_dirs(content_dict, dirname, names):
@@ -26,8 +26,9 @@ def find_dirs(content_dict, dirname, names):
            "text" in mimetypes.guess_type(abspath)[0]:
             try:
                 with open(abspath) as handle:
-                    pathSet(content_dict, abspath, handle.readlines())
+                    path_set(content_dict, abspath, handle.readlines())
             except:
+                raise
                 pass
 
 def file_list(directory):
