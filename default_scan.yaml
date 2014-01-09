@@ -1,0 +1,5 @@
+/etc:
+  - mimetypes:
+    - text/*
+    - application/x-yaml
+
